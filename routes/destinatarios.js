@@ -3,22 +3,22 @@ const db = require("../database/database");
 
 // todos los destinatarios
 router.get('/:id', (req, res) => {
-    const { id } = req.params;
-    const sql = 'SELECT * FROM destinatarios where id_usuario = ?';
-  
-    db.query(sql,[id], (error, results) => {
-      if (error) throw error;
-      if (results.length > 0) {
-        res.json(results);
-      } else {
-        res.send('Not result');
-      }
-    });
+  const { id } = req.params;
+  const sql = 'SELECT * FROM destinatarios where id_usuario = ?';
+
+  db.query(sql, [id], (error, results) => {
+    if (error) throw error;
+    if (results.length > 0) {
+      res.status(200).json(results);
+    } else {
+      res.status(400).send();
+    }
+  });
 });
 
 router.post('/', (req, res) => {
-  const {rut, nombres, correo, telefono, banco, tipo_cuenta, num_cuenta} = req.body;
-  if(rut && nombres && correo && telefono && banco && tipo_cuenta && num_cuenta){
+  const { rut, nombres, correo, telefono, banco, tipo_cuenta, num_cuenta } = req.body;
+  if (rut && nombres && correo && telefono && banco && tipo_cuenta && num_cuenta) {
     const sql = 'SELECT * FROM destinatarios';
     db.query(sql, (error, results) => {
       if (error) throw error;
@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
       }
     });
   }
-  
+
 });
 
 
