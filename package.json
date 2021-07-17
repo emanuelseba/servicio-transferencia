@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Banco Ripley",
   "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emanuelseba/servicio-transferencia.git"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
