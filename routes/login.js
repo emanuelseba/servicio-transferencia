@@ -12,9 +12,9 @@ router.post('/', async (req, res) => {
       db.query(sql, [correo, password], (error, results) => {
         if (error) throw error;
         if (results.length > 0) {
-          res.status(200).json(results);
+          res.status(200).json({ ok: true, results });
         } else {
-          res.status(400).send();
+          res.status(200).json({ ok: false });
         }
       });
     } else {

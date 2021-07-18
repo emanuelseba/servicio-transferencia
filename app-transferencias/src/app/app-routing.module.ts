@@ -5,13 +5,14 @@ import { LoginComponent } from './pages/login/login.component';
 import { NuevodestinatarioComponent } from './pages/nuevodestinatario/nuevodestinatario.component';
 import { TransferirComponent } from './pages/transferir/transferir.component';
 import { HistorialComponent } from './pages/historial/historial.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: LoginComponent },
-  { path: 'destinatario', component: NuevodestinatarioComponent },
-  { path: 'transferir', component: TransferirComponent },
-  { path: 'historial', component: HistorialComponent }
+  { path: 'home', component: LoginComponent},
+  { path: 'destinatario', component: NuevodestinatarioComponent,canActivate:[AuthGuard]  },
+  { path: 'transferir', component: TransferirComponent,canActivate:[AuthGuard]  },
+  { path: 'historial', component: HistorialComponent,canActivate:[AuthGuard]  }
 ];
 
 @NgModule({

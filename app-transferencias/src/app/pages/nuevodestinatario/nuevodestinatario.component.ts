@@ -10,6 +10,8 @@ export class NuevodestinatarioComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
+    console.log(localStorage.getItem('user'));
   }
 
 }

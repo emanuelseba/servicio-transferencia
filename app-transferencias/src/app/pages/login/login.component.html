@@ -15,19 +15,19 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Servicio Transferencia</h1>
                                 </div>
-                                <form class="user">
+                                <form class="user" [formGroup]="form" (submit)="login($event)">
                                     <div class="form-group">
                                         <input type="email" class="form-control form-control-user"
-                                            id="exampleInputEmail" aria-describedby="emailHelp"
+                                            aria-describedby="emailHelp" formControlName="correo"
                                             placeholder="Ingrese correo">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Ingrese contraseña">
+                                             placeholder="Ingrese contraseña" formControlName="password">
                                     </div>
-                                    <a href="destinatario" class="btn btn-primary btn-user btn-block">
+                                    <button class="btn btn-primary btn-user btn-block">
                                         Login
-                                    </a>
+                                    </button>
                                 </form>
                             </div>
                         </div>
