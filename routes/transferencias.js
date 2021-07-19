@@ -24,8 +24,11 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   const { id_usuario, id_destinatario, monto } = req.body;
   if (id_usuario && id_destinatario && monto) {
+    const DATE_FORMATER = require('dateformat');
+    var datetime = DATE_FORMATER(new Date(), "yyyy-mm-dd HH:MM:ss");
+
     const sql = 'INSERT INTO `transferencias` (`id_destinatario`, `id_usuario`, `monto`, `fecha_creacion`) VALUES (?,?,?,?)';
-    db.query(sql, [id_destinatario, id_usuario, monto, Date.now()], (error, results) => {
+    db.query(sql, [id_destinatario, id_usuario, monto, datetime], (error, results) => {
       if (error) throw error;
       if (results.affectedRows > 0) {
         res.status(200).json({ "ok": true });
