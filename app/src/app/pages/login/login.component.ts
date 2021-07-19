@@ -12,8 +12,8 @@ import { LoginService } from 'src/app/services/login.service';
 export class LoginComponent implements OnInit {
 
   form = new FormGroup({
-    correo: new FormControl('demo@ripley.cl', [ Validators.required ]),
-    password: new FormControl('1234', [ Validators.required ])
+    correo: new FormControl('', [ Validators.required ]),
+    password: new FormControl('', [ Validators.required ])
   });
 
   constructor(private loginService: LoginService, private router: Router) { }
