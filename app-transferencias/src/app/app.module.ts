@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -8,11 +8,17 @@ import { MenuComponent } from './componentes/menu/menu.component';
 import { NuevodestinatarioComponent } from './pages/nuevodestinatario/nuevodestinatario.component';
 import { NavComponent } from './componentes/nav/nav.component';
 import { FooterComponent } from './componentes/footer/footer.component';
-import { TransferirComponent } from './pages/transferir/transferir.component';
 import { HistorialComponent } from './pages/historial/historial.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { TransferirComponent } from './pages/transferir/transferir.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+
+import { NgSelectModule } from '@ng-select/ng-select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+
+import { NotifierModule } from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -30,7 +36,9 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgSelectModule,
+    NotifierModule
   ],
   providers: [],
   bootstrap: [AppComponent]
