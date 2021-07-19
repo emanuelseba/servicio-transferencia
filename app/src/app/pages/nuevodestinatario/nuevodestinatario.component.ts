@@ -46,7 +46,9 @@ export class NuevodestinatarioComponent implements OnInit {
     const rut = event.target.value;
     if(validateRut(rut)){
       event.target.value = formatRut(rut, RutFormat.DOTS_DASH);
-    }
+    }else{
+      event.target.value="";
+    } 
   }
 
   guardar(event: any) {
