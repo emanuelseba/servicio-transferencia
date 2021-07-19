@@ -1,0 +1,60 @@
+<div id="wrapper">
+
+    <app-menu></app-menu>
+
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <app-nav></app-nav>
+            <div class="container-fluid">
+                <h1 class="h3 mb-4 text-gray-800">Historial</h1>
+
+            </div>
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Movimientos de Transferencias</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Nombres</th>
+                                        <th>Rut</th>
+                                        <th>Banco</th>
+                                        <th>Tipo Cuenta</th>
+                                        <th>Fecha</th>
+                                        <th>Monto</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let transferencia of transferencias">
+                                    <tr>
+                                        <td>{{transferencia.nombres}}</td>
+                                        <td>{{transferencia.rut}}</td>
+                                        <td>{{transferencia.banco}}</td>
+                                        <td>{{transferencia.nombre_cuenta}}</td>
+                                        <td>{{transferencia.fecha}}</td>
+                                        <td>${{transferencia.monto}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+
+        <app-footer></app-footer>
+        
+    </div>
+
+</div>
