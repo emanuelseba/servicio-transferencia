@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [ Validators.required ])
   });
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(private loginService: LoginService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     localStorage.removeItem('iduser');
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
   login(event:any) {
     event.preventDefault();
     if(!this.form.valid) {
-      alert('El formulario no es valido');
+      this.toastr.warning('El formulario no es valido','Información');
       return;
     }
 
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit {
         this.loginService.isLogin = true;
         this.router.navigateByUrl('/home');
       }else{
-        alert('Error en el ingreso');
+        this.toastr.error('Error en las credenciales','Error');
       }
     });
 

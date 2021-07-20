@@ -6,6 +6,7 @@ import { DestinatarioService } from 'src/app/services/destinatario.service';
 import { TipoCuentaService } from 'src/app/services/tipocuenta.service';
 
 import { formatRut, RutFormat, validateRut} from '@fdograph/rut-utilities';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nuevodestinatario',
@@ -28,7 +29,7 @@ export class NuevodestinatarioComponent implements OnInit {
     numero_cuenta: new FormControl('', [Validators.required]),
   });
 
-  constructor(private destinarioService: DestinatarioService, private bancoService: BancoService, private tipoCuentaService: TipoCuentaService) {
+  constructor(private destinarioService: DestinatarioService, private bancoService: BancoService, private tipoCuentaService: TipoCuentaService, private toastr: ToastrService) {
     this.idUser = JSON.stringify(localStorage.getItem('iduser')).replace('"', '').replace('"', '');
 
     this.bancoService.obtenerBancos().subscribe((response:any) => {
@@ -47,6 +48,7 @@ export class NuevodestinatarioComponent implements OnInit {
     if(validateRut(rut)){
       event.target.value = formatRut(rut, RutFormat.DOTS_DASH);
     }else{
+      this.toastr.error('Rut incorrecto','Error');
       event.target.value="";
     } 
   }
@@ -55,7 +57,7 @@ export class NuevodestinatarioComponent implements OnInit {
     event.preventDefault();
 
     if (!this.form.valid) {
-      alert('El formulario no es valido');
+      this.toastr.warning('El formulario no es valido','Información');
       return;
     }
 
@@ -67,10 +69,10 @@ export class NuevodestinatarioComponent implements OnInit {
     this.destinarioService.guardarDestinatario(formValues.rut, this.idUser, formValues.nombres, formValues.correo,
       formValues.telefono,formValues.numero_cuenta,nameBanco,formValues.tipo_cuenta).subscribe((response: any) => {
         if(response.ok){
-          alert('ingreso correcto');
+          this.toastr.success('Ingreso Correcto','Correcto');
           this.form.reset();
         }else{
-          alert('Error en el ingreso');
+          this.toastr.error('Error en el ingreso','Error');
         }
       });
 

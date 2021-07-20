@@ -18,6 +18,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 @NgModule({
@@ -37,7 +39,15 @@ import { NgModule } from '@angular/core';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgSelectModule
+    NgSelectModule,
+    ToastrModule.forRoot({
+      timeOut:5000,
+      progressBar:true,
+      progressAnimation: 'increasing',
+      closeButton:true,
+      positionClass: 'toast-bottom-right'
+
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
