@@ -1,4 +1,4 @@
-
+﻿
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('iduser', response.results[0].iduser);
         localStorage.setItem('nombres', response.results[0].nombres);
         this.loginService.isLogin = true;
-        this.router.navigateByUrl('/home');
+        this.router.navigate(['home']);
       }else{
         this.toastr.error('Error en las credenciales','Error');
       }
