@@ -33,8 +33,8 @@
                                         <th>Monto</th>
                                     </tr>
                                 </thead>
-                                <tbody *ngFor="let transferencia of transferencias">
-                                    <tr>
+                                <tbody *ngIf="transferencias?.length != 0" >
+                                    <tr *ngFor="let transferencia of transferencias">
                                         <td>{{transferencia.nombres}}</td>
                                         <td>{{transferencia.rut}}</td>
                                         <td>{{transferencia.banco}}</td>
@@ -43,6 +43,11 @@
                                         <td>${{transferencia.monto}}</td>
                                     </tr>
                                 </tbody>
+                                <tbody *ngIf="transferencias?.length == 0">
+                                    <tr>
+                                      <td colspan="6" class="no-data-available">No hay datos.</td>
+                                    </tr>
+                                  </tbody>
                             </table>
                         </div>
                     </div>

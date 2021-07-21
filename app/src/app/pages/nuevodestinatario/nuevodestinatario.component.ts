@@ -22,7 +22,7 @@ export class NuevodestinatarioComponent implements OnInit {
   form = new FormGroup({
     rut: new FormControl('', [Validators.required]),
     nombres: new FormControl('', [Validators.required]),
-    correo: new FormControl('', [Validators.required]),
+    correo: new FormControl('', [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$") ]),
     telefono: new FormControl('', [Validators.required]),
     banco: new FormControl('', [Validators.required]),
     tipo_cuenta: new FormControl('', [Validators.required]),
