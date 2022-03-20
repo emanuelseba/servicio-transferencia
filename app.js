@@ -24,5 +24,5 @@ app.get('*', (req, res) => {
 
 
 app.listen(port, () => {
-    console.log(`EJECUTANDO EN EL PORT: ${port} `);
+    console.log(`EJECUTANDO EN : ${port} `);
 })
